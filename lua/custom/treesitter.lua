@@ -3,15 +3,25 @@
 local M = {}
 
 M.merge_config = function()
-  local ts = require("nvim-treesitter")
+  local ts = require 'nvim-treesitter'
 
   -- These are the parsers that were in Kickstart's original 'opts.ensure_installed'
   local kickstart_default_parsers = {
-    'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc'
+    'bash',
+    'c',
+    'diff',
+    'html',
+    'lua',
+    'luadoc',
+    'markdown',
+    'markdown_inline',
+    'query',
+    'vim',
+    'vimdoc',
   }
 
   -- Your additional languages from LunarVim
-  local custom_languages = { "python", "javascript", "zig" }
+  local custom_languages = { 'python', 'javascript', 'zig', 'go' }
 
   -- Combine both lists, ensuring no duplicates
   local all_parsers = {}
@@ -54,4 +64,3 @@ M.merge_config = function()
 end
 
 return M
-
