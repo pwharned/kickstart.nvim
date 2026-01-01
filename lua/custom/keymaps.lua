@@ -69,3 +69,12 @@ end, { noremap = false, silent = true, desc = 'DAP: Close UI' })
 vim.keymap.set('n', '<leader>gt', ':GoTest<CR>', { desc = 'Go Test' })
 vim.keymap.set('n', '<leader>gr', ':GoRun<CR>', { desc = 'Go Run' })
 vim.keymap.set('n', '<leader>gf', ':GoFmt<CR>', { desc = 'Go Format' })
+
+vim.keymap.set('n', '<leader>e', function()
+  vim.diagnostic.open_float()
+end, { desc = 'Show diagnostic popup' })
+vim.api.nvim_create_autocmd('CursorHold', {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end,
+})

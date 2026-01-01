@@ -21,7 +21,7 @@ M.merge_config = function()
   }
 
   -- Your additional languages from LunarVim
-  local custom_languages = { 'python', 'javascript', 'zig', 'go' }
+  local custom_languages = { 'python', 'javascript', 'zig', 'go', 'gomod', 'go-template', 'gotmpl', 'html' }
 
   -- Combine both lists, ensuring no duplicates
   local all_parsers = {}

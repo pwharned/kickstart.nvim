@@ -4,6 +4,43 @@
 -- These are plugins from your LunarVim config that are not in Kickstart.
 
 return {
+
+  {
+    'ngalaiko/tree-sitter-go-template',
+    build = ':TSUpdate go-template',
+  },
+
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      -- Enable format on save (optional)
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
+
+      -- Tell conform which formatter to use for HTML
+      formatters_by_ft = {
+        html = { 'prettier' },
+        gotmpl = { 'prettier' },
+      },
+
+      -- Optional: customize tidy behavior
+      formatters = {
+        tidy = {
+          command = 'tidy',
+          args = {
+            '-quiet',
+            '-indent',
+            '-wrap',
+            '0',
+          },
+          stdin = true,
+        },
+      },
+    },
+  },
+
   { 'nvim-neotest/nvim-nio' }, -- Dependency for nvim-metals
 
   {
