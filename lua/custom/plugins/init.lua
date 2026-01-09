@@ -6,11 +6,6 @@
 return {
 
   {
-    'ngalaiko/tree-sitter-go-template',
-    build = ':TSUpdate go-template',
-  },
-
-  {
     'stevearc/conform.nvim',
     opts = {
       -- Enable format on save (optional)
@@ -58,19 +53,31 @@ return {
       vim.g.vimtex_view_method = 'zathura'
     end,
   },
-
   {
     'ray-x/go.nvim',
-    dependencies = { 'ray-x/guihua.lua' },
-    config = function()
-      require('go').setup {
-        lsp_cfg = true,
-        lsp_gofumpt = true,
-        lsp_keymaps = true,
-        dap_debug = true,
+    dependencies = { -- optional packages
+      'ray-x/guihua.lua',
+      'neovim/nvim-lspconfig',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = function()
+      require('go').setup(opts)
+      local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = '*.go',
+        callback = function()
+          require('go.format').goimports()
+        end,
+        group = format_sync_grp,
+      })
+      return {
+        -- lsp_keymaps = false,
+        -- other options
       }
     end,
+    event = { 'CmdlineEnter' },
     ft = { 'go', 'gomod' },
+    build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
 
   -- solarized.nvim is NOT included as it conflicts with Kickstart's tokyonight.nvim.

@@ -2,11 +2,12 @@ return {
 
   { -- Linting
     'mfussenegger/nvim-lint',
-    event = { 'BufReadPre', 'BufNewFile' },
+    --event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        go = { 'golangcilint' }, -- Add this line
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
