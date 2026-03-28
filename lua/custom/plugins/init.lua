@@ -17,7 +17,8 @@ return {
       -- Tell conform which formatter to use for HTML
       formatters_by_ft = {
         html = { 'prettier' },
-        gotmpl = { 'prettier' },
+        gohtmltmpl = { 'prettier' },
+        javascript = { 'prettier' },
       },
 
       -- Optional: customize tidy behavior
@@ -61,7 +62,6 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     opts = function()
-      require('go').setup(opts)
       local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
       vim.api.nvim_create_autocmd('BufWritePre', {
         pattern = '*.go',

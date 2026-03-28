@@ -1,3 +1,6 @@
 vim.filetype.add {
-  extension = {},
+  extension = {
+    gohtmltmpl = 'gohtmltmpl',
+    html = 'gohtmltmpl',
+  },
 }
