@@ -19,6 +19,9 @@ return {
         html = { 'prettier' },
         gohtmltmpl = { 'prettier' },
         javascript = { 'prettier' },
+        markdown = { 'prettier' },
+        json = { 'prettier' },
+        python = { 'black' },
       },
 
       -- Optional: customize tidy behavior
@@ -38,7 +41,12 @@ return {
   },
 
   { 'nvim-neotest/nvim-nio' }, -- Dependency for nvim-metals
-
+  {
+    'dnlhc/glance.nvim',
+    config = function()
+      require('glance').setup()
+    end,
+  },
   {
     'scalameta/nvim-metals',
     -- The actual config function is in lua/user/metals.lua, called from custom/init.lua

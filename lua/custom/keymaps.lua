@@ -8,7 +8,8 @@ local map = vim.keymap.set
 
 -- Quickfix navigation
 map('n', '<leader>e', ':cnext<CR>', { desc = 'Next Quickfix item' })
-
+map('n', 'pd', '<cmd>Glance definitions<CR>', { desc = 'Preview definition (Glance)' })
+map('n', 'pi', '<cmd>Glance implementations<CR>', { desc = 'Preview implementations (Glance)' })
 -- Buffer management (Telescope integration)
 -- Note: Kickstart uses <leader><leader> for buffers. This is an additional mapping.
 map('n', '<leader>b', '<cmd>Telescope buffers<cr>', { noremap = true, silent = true, desc = 'Find [B]uffers' })
