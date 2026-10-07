@@ -20,11 +20,18 @@ map('n', '<leader>dx', function()
   require('dapui').close()
 end, { desc = 'DAP: Close UI' })
 
---vim.api.nvim_create_autocmd('CursorHold', {
--- callback = function()
---   vim.diagnostic.open_float(nil, { focus = false })
---end,
---})
+local diagnostic_group = vim.api.nvim_create_augroup('diagnostic-float', { clear = true })
+vim.api.nvim_create_autocmd('CursorHold', {
+  group = diagnostic_group,
+  callback = function()
+    vim.diagnostic.open_float(nil, {
+      scope = 'line',
+      focus = false,
+      severity = vim.diagnostic.severity.ERROR,
+      border = 'rounded',
+    })
+  end,
+})
 -- in custom/keymaps.lua
 vim.api.nvim_create_autocmd('FocusLost', {
   callback = function()

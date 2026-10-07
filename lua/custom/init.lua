@@ -9,3 +9,4 @@ require 'custom.lang.go'
 require 'custom.lang.gotmpl'
 require 'custom.lang.scala'
 require 'custom.lang.latex'
+require('custom.ai').setup()
